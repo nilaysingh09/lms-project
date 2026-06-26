@@ -3,6 +3,12 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+const lectureRoutes = require('./routes/lectureRoutes');
+const enrollmentRoutes = require('./routes/enrollmentRoutes');
+const assignmentRoutes = require('./routes/assignmentRoutes');
+const quizRoutes = require('./routes/quizRoutes');
+const certificateRoutes = require('./routes/certificateRoutes');
 
 dotenv.config();
 
@@ -13,8 +19,13 @@ app.use(express.json());
 
 connectDB();
 
-// Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/courses', courseRoutes);
+app.use('/api/lectures', lectureRoutes);
+app.use('/api/enroll', enrollmentRoutes);
+app.use('/api/assignments', assignmentRoutes);
+app.use('/api/quizzes', quizRoutes);
+app.use('/api/certificates', certificateRoutes);
 
 app.get('/', (req, res) => {
   res.send('LMS Server is running!');
