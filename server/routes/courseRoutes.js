@@ -6,11 +6,13 @@ const {
   getCourseById,
   updateCourse,
   publishCourse,
-  deleteCourse
+  deleteCourse,
+  getMyCourses
 } = require('../controllers/courseController');
 const { protect } = require('../middleware/authMiddleware');
 const { roleMiddleware } = require('../middleware/roleMiddleware');
 
+router.get('/my', protect, roleMiddleware('faculty', 'admin'), getMyCourses);
 router.get('/', getAllCourses);
 router.get('/:id', getCourseById);
 router.post('/', protect, roleMiddleware('faculty', 'admin'), createCourse);
