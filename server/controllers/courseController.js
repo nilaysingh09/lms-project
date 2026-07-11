@@ -118,11 +118,22 @@ const deleteCourse = async (req, res) => {
   }
 };
 
+const getMyCourses = async (req, res) => {
+  try {
+    const courses = await Course.find({ instructor: req.user.id })
+      .populate('instructor', 'name email');
+    res.status(200).json(courses);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
 module.exports = {
   createCourse,
   getAllCourses,
   getCourseById,
   updateCourse,
   publishCourse,
-  deleteCourse
+  deleteCourse,
+  getMyCourses
 };
