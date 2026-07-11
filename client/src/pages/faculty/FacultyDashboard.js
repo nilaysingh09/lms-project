@@ -20,11 +20,10 @@ function FacultyDashboard() {
 
   const fetchCourses = async () => {
     try {
-      const res = await API.get('/courses');
-      const myCourses = res.data.filter(
-        c => c.instructor?._id === user.id
-      );
-      setCourses(myCourses);
+      const res = await API.get('/courses/my', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setCourses(res.data);
     } catch (err) {
       console.error(err);
     } finally {
