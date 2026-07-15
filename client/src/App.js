@@ -6,6 +6,7 @@ import CourseDetail from './pages/student/CourseDetail';
 import FacultyDashboard from './pages/faculty/FacultyDashboard';
 import CreateCourse from './pages/faculty/CreateCourse';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import QuizPage from './pages/student/QuizPage';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/faculty-dashboard" element={<FacultyDashboard />} />
         <Route path="/create-course" element={<CreateCourse />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/quiz/:quizId" element={<QuizPage />} />
       </Routes>
     </BrowserRouter>
   );
