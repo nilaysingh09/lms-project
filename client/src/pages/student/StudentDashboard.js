@@ -65,7 +65,12 @@ function StudentDashboard() {
             <div className="card-grid">
               {enrollments.map(e => (
                 <div className="course-card" key={e._id}>
-                  <h4>{e.course?.title}</h4>
+                  <h4
+                    style={{ cursor: 'pointer', color: '#5B5FEF' }}
+                    onClick={() => navigate(`/course/${e.course?._id}`)}
+                  >
+                    {e.course?.title}
+                  </h4>
                   <p>{e.course?.category}</p>
                   <div className="progress-bar">
                     <div
@@ -88,7 +93,12 @@ function StudentDashboard() {
           <div className="card-grid">
             {courses.map(course => (
               <div className="course-card" key={course._id}>
-                <h4>{course.title}</h4>
+                <h4
+                  style={{ cursor: 'pointer', color: '#5B5FEF' }}
+                  onClick={() => navigate(`/course/${course._id}`)}
+                >
+                  {course.title}
+                </h4>
                 <p>{course.description}</p>
                 <p className="course-meta">
                   {course.category} • {course.level}
