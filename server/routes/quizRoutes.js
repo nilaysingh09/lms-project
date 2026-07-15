@@ -4,13 +4,15 @@ const {
   createQuiz,
   getQuizzesByCourse,
   submitQuiz,
-  getMyResults
+  getMyResults,
+  getQuizById
 } = require('../controllers/quizController');
 const { protect } = require('../middleware/authMiddleware');
 const { roleMiddleware } = require('../middleware/roleMiddleware');
 
 router.post('/', protect, roleMiddleware('faculty', 'admin'), createQuiz);
 router.get('/course/:courseId', protect, getQuizzesByCourse);
+router.get('/:quizId', protect, getQuizById);
 router.post('/:quizId/submit', protect, roleMiddleware('student'), submitQuiz);
 router.get('/:quizId/my-results', protect, getMyResults);
 
