@@ -3,10 +3,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import StudentDashboard from './pages/student/StudentDashboard';
 import CourseDetail from './pages/student/CourseDetail';
+import QuizPage from './pages/student/QuizPage';
+import Certificates from './pages/student/Certificates';
 import FacultyDashboard from './pages/faculty/FacultyDashboard';
 import CreateCourse from './pages/faculty/CreateCourse';
 import AdminDashboard from './pages/admin/AdminDashboard';
-import QuizPage from './pages/student/QuizPage';
 import './App.css';
 
 function App() {
@@ -18,10 +19,11 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
         <Route path="/course/:courseId" element={<CourseDetail />} />
+        <Route path="/quiz/:quizId" element={<QuizPage />} />
+        <Route path="/certificates" element={<Certificates />} />
         <Route path="/faculty-dashboard" element={<FacultyDashboard />} />
         <Route path="/create-course" element={<CreateCourse />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/quiz/:quizId" element={<QuizPage />} />
       </Routes>
     </BrowserRouter>
   );
