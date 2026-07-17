@@ -17,7 +17,15 @@ function Navbar() {
         <span>LearnHub</span>
       </div>
       <div className="nav-right">
-        <span className="nav-user">👤 {user?.name}</span>
+        {user?.role === 'student' && (
+          <button
+            className="nav-link"
+            onClick={() => navigate('/certificates')}
+          >
+            My Certificates
+          </button>
+        )}
+        <span className="nav-user">{user?.name}</span>
         <span className="nav-role">{user?.role}</span>
         <button className="nav-logout" onClick={handleLogout}>Logout</button>
       </div>
