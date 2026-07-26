@@ -19,6 +19,7 @@ function CourseDetail() {
   useEffect(() => {
     if (!token) { navigate('/login'); return; }
     fetchAll();
+  // eslint-disable-next-line
   }, []);
 
   const fetchAll = async () => {

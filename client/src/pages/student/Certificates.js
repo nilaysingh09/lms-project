@@ -16,6 +16,7 @@ function Certificates() {
       return;
     }
     fetchCertificates();
+  // eslint-disable-next-line
   }, []);
 
   const fetchCertificates = async () => {

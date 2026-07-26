@@ -18,6 +18,7 @@ function QuizPage() {
   useEffect(() => {
     if (!token) { navigate('/login'); return; }
     fetchQuiz();
+  // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

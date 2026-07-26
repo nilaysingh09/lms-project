@@ -17,6 +17,7 @@ function StudentDashboard() {
       return;
     }
     fetchData();
+  // eslint-disable-next-line
   }, []);
 
   const fetchData = async () => {
