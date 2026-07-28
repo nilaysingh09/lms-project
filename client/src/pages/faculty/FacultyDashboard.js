@@ -16,6 +16,7 @@ function FacultyDashboard() {
       return;
     }
     fetchCourses();
+  // eslint-disable-next-line
   }, []);
 
   const fetchCourses = async () => {
@@ -50,13 +51,10 @@ function FacultyDashboard() {
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
-            <h2>Faculty Dashboard 👨‍🏫</h2>
+            <h2>Faculty Dashboard</h2>
             <p className="subtitle">Manage your courses and students</p>
           </div>
-          <button
-            className="btn-primary"
-            onClick={() => navigate('/create-course')}
-          >
+          <button className="btn-primary" onClick={() => navigate('/create-course')}>
             + Create Course
           </button>
         </div>
@@ -66,10 +64,7 @@ function FacultyDashboard() {
           {courses.length === 0 ? (
             <div className="empty-state">
               <p>You haven't created any courses yet.</p>
-              <button
-                className="btn-primary"
-                onClick={() => navigate('/create-course')}
-              >
+              <button className="btn-primary" onClick={() => navigate('/create-course')}>
                 Create your first course
               </button>
             </div>
@@ -80,17 +75,43 @@ function FacultyDashboard() {
                   <div className="card-header">
                     <h4>{course.title}</h4>
                     <span className={`status-badge ${course.isPublished ? 'published' : 'draft'}`}>
-                      {course.isPublished ? '🟢 Published' : '⚪ Draft'}
+                      {course.isPublished ? 'Published' : 'Draft'}
                     </span>
                   </div>
                   <p>{course.description}</p>
+                  <p className="course-meta">{course.category} • {course.level}</p>
                   <p className="course-meta">
-                    {course.category} • {course.level}
+                    {course.enrolledStudents?.length || 0} students enrolled
                   </p>
-                  <p className="course-meta">
-                    👥 {course.enrolledStudents?.length || 0} students
-                  </p>
-                  <div className="card-actions">
+
+                  <div className="faculty-actions">
+                    <button
+                      className="btn-action"
+                      onClick={() => navigate(`/add-lecture/${course._id}`)}
+                    >
+                      + Lecture
+                    </button>
+                    <button
+                      className="btn-action"
+                      onClick={() => navigate(`/add-quiz/${course._id}`)}
+                    >
+                      + Quiz
+                    </button>
+                    <button
+                      className="btn-action"
+                      onClick={() => navigate(`/add-assignment/${course._id}`)}
+                    >
+                      + Assignment
+                    </button>
+                    <button
+                      className="btn-action"
+                      onClick={() => navigate(`/submissions/${course._id}`)}
+                    >
+                      Submissions
+                    </button>
+                  </div>
+
+                  <div className="card-actions" style={{ marginTop: '10px' }}>
                     <button
                       className="btn-secondary"
                       onClick={() => handlePublish(course._id)}
