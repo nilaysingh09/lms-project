@@ -7,6 +7,10 @@ import QuizPage from './pages/student/QuizPage';
 import Certificates from './pages/student/Certificates';
 import FacultyDashboard from './pages/faculty/FacultyDashboard';
 import CreateCourse from './pages/faculty/CreateCourse';
+import AddLecture from './pages/faculty/AddLecture';
+import AddQuiz from './pages/faculty/AddQuiz';
+import AddAssignment from './pages/faculty/AddAssignment';
+import ViewSubmissions from './pages/faculty/ViewSubmissions';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import './App.css';
 
@@ -23,6 +27,10 @@ function App() {
         <Route path="/certificates" element={<Certificates />} />
         <Route path="/faculty-dashboard" element={<FacultyDashboard />} />
         <Route path="/create-course" element={<CreateCourse />} />
+        <Route path="/add-lecture/:courseId" element={<AddLecture />} />
+        <Route path="/add-quiz/:courseId" element={<AddQuiz />} />
+        <Route path="/add-assignment/:courseId" element={<AddAssignment />} />
+        <Route path="/submissions/:courseId" element={<ViewSubmissions />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
