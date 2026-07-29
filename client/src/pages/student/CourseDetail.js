@@ -64,6 +64,23 @@ function CourseDetail() {
   if (loading) return <div className="loading">Loading...</div>;
   if (!course) return <div className="loading">Course not found</div>;
 
+  const handleGetCertificate = async () => {
+    try {
+      const res = await API.post(
+        `/certificates/generate/${courseId}`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      alert('Certificate generated! Go to My Certificates in the navbar to download it.');
+    } catch (err) {
+      if (err.response?.data?.message === 'Certificate already issued') {
+        alert('Certificate already issued! Go to My Certificates in the navbar to download it.');
+      } else {
+        alert(err.response?.data?.message || 'Error generating certificate');
+      }
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -95,7 +112,13 @@ function CourseDetail() {
               </div>
               {progress.isCompleted && (
                 <div className="completed-banner">
-                  Course Completed! Go to your dashboard to download your certificate.
+                  Course Completed! 🎉
+                  <button
+                    className="btn-cert"
+                    onClick={handleGetCertificate}
+                  >
+                    Get Certificate
+                  </button>
                 </div>
               )}
             </div>
