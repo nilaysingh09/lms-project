@@ -97,7 +97,7 @@ function ViewSubmissions() {
                     <div className="submission-info">
                       <h4>{sub.student?.name}</h4>
                       <p>{sub.student?.email}</p>
-                      <a>
+                      <a
                         href={sub.fileUrl}
                         target="_blank"
                         rel="noreferrer"
