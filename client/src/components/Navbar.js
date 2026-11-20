@@ -11,23 +11,34 @@ function Navbar() {
   };
 
   return (
-    <nav className="navbar">
-      <div className="nav-brand">
-        <div className="auth-logo">L</div>
-        <span>LearnHub</span>
-      </div>
-      <div className="nav-right">
-        {user?.role === 'student' && (
-          <button
-            className="nav-link"
-            onClick={() => navigate('/certificates')}
-          >
-            My Certificates
+    <nav className="dash-navbar">
+      <div className="dash-navbar-inner">
+        <div className="site-logo" onClick={() => navigate('/')}>
+          <div className="site-logo-icon">B</div>
+          <div className="site-logo-text">
+            <span className="site-logo-name">Bloomrole</span>
+          </div>
+        </div>
+
+        <div className="dash-nav-right">
+          {user?.role === 'student' && (
+            <button className="site-nav-link" onClick={() => navigate('/certificates')}>
+              My Certificates
+            </button>
+          )}
+          <div className="site-nav-user">
+            <div className="site-nav-avatar">
+              {user?.name?.charAt(0).toUpperCase()}
+            </div>
+            <div className="site-nav-info">
+              <span className="site-nav-name">{user?.name}</span>
+              <span className="site-nav-role">{user?.role}</span>
+            </div>
+          </div>
+          <button className="site-nav-logout" onClick={handleLogout}>
+            Logout
           </button>
-        )}
-        <span className="nav-user">{user?.name}</span>
-        <span className="nav-role">{user?.role}</span>
-        <button className="nav-logout" onClick={handleLogout}>Logout</button>
+        </div>
       </div>
     </nav>
   );
